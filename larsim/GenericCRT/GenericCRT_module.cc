@@ -50,6 +50,8 @@ private:
 
   std::string fLArG4Label;  
   
+  sim::GenericCRTUtility fCRTConvertUtil;
+  
   // Declare member data here.
 
 };
@@ -58,6 +60,7 @@ private:
 sim::GenericCRT::GenericCRT(fhicl::ParameterSet const& p)
   : EDProducer{p}  // 
   , fLArG4Label(p.get< std::string >("LArG4Label"))
+  ,fCRTConvertUtil()
   // More initializers here.
 {
   produces< std::vector<sim::AuxDetSimChannel> >();  
@@ -75,9 +78,11 @@ void sim::GenericCRT::produce(art::Event& e)
   e.getByLabel(fLArG4Label,input_AuxDetHitCol);
   std::vector<sim::AuxDetHit> const& input_AuxDetHitColVector(*input_AuxDetHitCol);
   
-  const sim::AuxDetSimChannel adsc = sim::GenericCRTUtility::GetAuxDetSimChannelByNumber(input_AuxDetHitColVector,1);
-       //GenericCRTUtility::FillAuxDetSimChannels(input_AuxDetHitColVector,adCol.get());
-  adCol->push_back(adsc);      
+  //const sim::AuxDetSimChannel adsc = fCRTConvertUtil.GetAuxDetSimChannelByNumber(input_AuxDetHitColVector,1);
+  //adCol->push_back(adsc);      
+ 
+  fCRTConvertUtil.FillAuxDetSimChannels(input_AuxDetHitColVector,adCol.get());
+  
         
   e.put(std::move(adCol));   
     

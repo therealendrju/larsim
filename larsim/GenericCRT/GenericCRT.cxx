@@ -15,6 +15,15 @@
 
 
 
+
+// sim::GenericCRTUtility::GenericCRTUtility()
+// {
+//     
+//     
+// }
+
+
+
 unsigned int sim::GenericCRTUtility::CopyAuxDetHittoAuxDetIDE(const sim::AuxDetHit &InputHit,sim::AuxDetIDE &outputIDE)
 {
     
@@ -111,7 +120,7 @@ sim::AuxDetSimChannel const sim::GenericCRTUtility::GetAuxDetSimChannelByNumber(
 
 
 
-/*
+
 void sim::GenericCRTUtility::FillAuxDetSimChannels(const std::vector<sim::AuxDetHit> &InputHitVector, std::vector<sim::AuxDetSimChannel> *AuxDetVector)
 {
     
@@ -125,8 +134,8 @@ void sim::GenericCRTUtility::FillAuxDetSimChannels(const std::vector<sim::AuxDet
     //loop on AuxDetChannelNumbers
     for(unsigned iAuxDet=0;iAuxDet < AuxDetChanNumbers.size();iAuxDet++ )
     {
- 
-       AuxDetVector->push_back(adsc);
+     const sim::AuxDetSimChannel adsc=GetAuxDetSimChannelByNumber(InputHitVector,AuxDetChanNumbers[iAuxDet]);
+     AuxDetVector->push_back(std::move(adsc));
         
     }//end loop on AuxDetChanNumbers 
-}*/
+}

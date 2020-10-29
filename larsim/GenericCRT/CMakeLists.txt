@@ -29,7 +29,8 @@ art_make(LIB_LIBRARIES  larsim_PhotonPropagation
                         ROOT::MathCore
                         ${CLHEP}
                         ${G4_LIB_LIST}
-           MODULE_LIBRARIES larsim_MCCheater_ParticleInventoryService_service
+           MODULE_LIBRARIES larsim_GenericCRT 
+                        larsim_MCCheater_ParticleInventoryService_service
                         lardataalg_MCDumpers
                         larsim_Simulation  lardataobj_Simulation
                         larcorealg_Geometry

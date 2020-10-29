@@ -20,18 +20,23 @@
 
 namespace sim{
 
-namespace GenericCRTUtility{
+    class GenericCRTUtility{
+        
+    public:
+        
+    unsigned int CopyAuxDetHittoAuxDetIDE(const sim::AuxDetHit &InputHit,sim::AuxDetIDE &outputIDE);
+
+    unsigned int GetNumberofAuxDetChannels(const std::vector<sim::AuxDetHit> &InputHitVector,std::vector<unsigned int> &AuxDetChanNumbers );
+
+    sim::AuxDetSimChannel const  GetAuxDetSimChannelByNumber(const std::vector<sim::AuxDetHit> &InputHitVector,unsigned int channel);  
+
+    void FillAuxDetSimChannels(const std::vector<sim::AuxDetHit> &InputHitVector, std::vector<sim::AuxDetSimChannel>  *AuxDetVector); 
+
+    private:
+        
+
     
-unsigned int CopyAuxDetHittoAuxDetIDE(const sim::AuxDetHit &InputHit,sim::AuxDetIDE &outputIDE);
-
-
-unsigned int GetNumberofAuxDetChannels(const std::vector<sim::AuxDetHit> &InputHitVector,std::vector<unsigned int> &AuxDetChanNumbers );
-
-sim::AuxDetSimChannel const  GetAuxDetSimChannelByNumber(const std::vector<sim::AuxDetHit> &InputHitVector,unsigned int channel);  
-
-//void FillAuxDetSimChannels(const std::vector<sim::AuxDetHit> &InputHitVector, std::vector<sim::AuxDetSimChannel>  *AuxDetVector); 
-
-    }
+    };
 
 }
 
